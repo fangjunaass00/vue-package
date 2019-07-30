@@ -5,12 +5,13 @@
     </div>-->
     <div class="input-block">
       <div class="input-name title1">{{data.title}}</div>
-      <input
+      <!-- <input
         class="input-input"
         :placeholder="data.placeholder"
         @click="showSelect"
         v-model="cityEx"
-      />
+      />-->
+      <div class="input-input" :placeholder="data.placeholder" @click="showSelect">{{data.cityEx}}</div>
     </div>
   </div>
 </template>
@@ -35,14 +36,14 @@ export default {
     name: 'AddressSelector',
     data() {
         return {
-            cityEx: '内蒙古自治区 呼和浩特市 土默特左旗',
+            // cityEx: '内蒙古自治区 呼和浩特市 土默特左旗',
         };
     },
     methods: {
         //地址显示控件点击后触发事件
         showSelect: function() {
             //自己实现的根据地址名称获取id，代码如下
-            var levels = this.textToLevel(this.cityEx);
+            var levels = this.textToLevel(this.data.cityEx);
 
             var iosSelect = new IosSelect(
                 3,
@@ -55,13 +56,16 @@ export default {
                     twoLevelId: levels[1],
                     threeLevelId: levels[2], //地址选择点击确定后的回调
                     callback: (selectOneObj, selectTwoObj, selectThreeObj) => {
-                        this.cityEx =
+                        var cityEx =
                             selectOneObj.value +
                             ' ' +
                             selectTwoObj.value +
                             ' ' +
                             selectThreeObj.value;
-                        console.log(this.cityEx);
+                        this.$emit('changeInput', {
+                            pluginname: 'AddressSelector',
+                            cityEx: cityEx,
+                        });
                     },
                 }
             );

@@ -6,9 +6,11 @@ import soundjs from './util/soundjs';
 import store from './util/store.js';
 // eslint-disable-next-line no-unused-vars
 // const vConsole = require('./util/vconsole.js');
+import router from './router';
 
 Vue.config.productionTip = false;
 
 new Vue({
     render: h => h(App),
+    router,
 }).$mount('#app');

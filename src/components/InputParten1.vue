@@ -2,7 +2,8 @@
   <div class="input-block">
     <div>请输入：</div>
     <div class="input-block-input">
-      <input type="text" :value="data.value" @change="changeValue" />
+      <input type="text" :value="data.value" @input="changeValue($event)" />
+      <div>input值：{{data.value}}</div>
     </div>
   </div>
 </template>
@@ -12,9 +13,15 @@ export default {
     name: 'InputParten1',
     props: ['data'],
     methods: {
-        changeValue: function() {
-            console.log('change');
-            this.$emit('inputOnChange');
+        changeValue: function($event) {
+            console.log('change', {
+                pluginname: 'InputParten1',
+                $event,
+            });
+            this.$emit('changeInput', {
+                pluginname: 'InputParten1',
+                $event,
+            });
         },
     },
 };
