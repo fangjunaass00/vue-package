@@ -102,7 +102,7 @@ export default {
                 3,
                 [this.yearData, this.monthData, this.dateData],
                 {
-                    title: '地址选择',
+                    title: '请选择时间',
                     itemHeight: 35,
                     relation: [1, 1], //三个初始值，省市县
                     callback: (selectOneObj, selectTwoObj, selectThreeObj) => {

@@ -8,6 +8,7 @@ import AddressSelector from '../components/AddressSelector.vue';
 import TimeSelector from '../components/TimeSelector.vue';
 import UploadImage from '../components/UploadImage.vue';
 import UploadVideo from '../components/UploadVideo';
+import AxiosPart from '../components/AxiosPart';
 
 Vue.use(Router);
 
@@ -48,5 +49,12 @@ export default new Router({
             name: 'UploadVideo',
             component: UploadVideo,
         },
+        {
+            path: '/AxiosPart',
+            name: 'AxiosPart',
+            component: AxiosPart,
+        },
+
+        ,
     ],
 });
