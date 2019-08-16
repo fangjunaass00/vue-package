@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <div class="input-block" @click="showSelect">
-      <div class="input-name title1">请选择组件</div>
-      <!-- <input class="input-input" :value="data.rank2" /> -->
-      <div class="input-name name2">{{data.pluginName}}</div>
+    <div>
+        <div class="input-block" @click="showSelect">
+            <div class="input-name title1">请选择组件</div>
+            <!-- <input class="input-input" :value="data.rank2" /> -->
+            <div class="input-name name2">{{data.pluginName}}</div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ import { rank1, rank2, rank3 } from '../../util/iosSelect/packageJs.js';
 
 export default {
     props: ['data'],
-    name: 'AddressSelector',
+    name: 'SelectorAddress',
     data() {
         return {};
     },

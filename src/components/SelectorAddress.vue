@@ -1,19 +1,23 @@
 <template>
-  <div>
-    <!-- <div class="rightList" @click="showSelect">
+    <div>
+        <!-- <div class="rightList" @click="showSelect">
       <input placeholder="请选择地址" v-model="cityEx" />
-    </div>-->
-    <div class="input-block">
-      <div class="input-name title1">{{data.title}}</div>
-      <!-- <input
+        </div>-->
+        <div class="input-block">
+            <div class="input-name title1">{{data.title}}</div>
+            <!-- <input
         class="input-input"
         :placeholder="data.placeholder"
         @click="showSelect"
         v-model="cityEx"
-      />-->
-      <div class="input-input" :placeholder="data.placeholder" @click="showSelect">{{data.cityEx}}</div>
+            />-->
+            <div
+                class="input-input"
+                :placeholder="data.placeholder"
+                @click="showSelect"
+            >{{data.cityEx}}</div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -33,7 +37,7 @@ import {
 
 export default {
     props: ['data'],
-    name: 'AddressSelector',
+    name: 'SelectorAddress',
     data() {
         return {
             // cityEx: '内蒙古自治区 呼和浩特市 土默特左旗',
@@ -63,7 +67,7 @@ export default {
                             ' ' +
                             selectThreeObj.value;
                         this.$emit('changeInput', {
-                            pluginname: 'AddressSelector',
+                            pluginname: 'SelectorAddress',
                             cityEx: cityEx,
                         });
                     },

@@ -1,12 +1,10 @@
 import Vue from 'vue';
 import App from './App.vue';
-// eslint-disable-next-line no-unused-vars
-import soundjs from './util/soundjs';
-// eslint-disable-next-line no-unused-vars
-import store from './util/store.js';
-// eslint-disable-next-line no-unused-vars
-// const vConsole = require('./util/vconsole.js');
 import router from './router';
+
+// 注册微信分享
+import WXConfig from './util/wechat-share';
+Vue.prototype.WXConfig = WXConfig;
 
 import axios from 'axios';
 Vue.prototype.$axios = axios;

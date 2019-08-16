@@ -1,10 +1,15 @@
 <template>
-  <div>
-    <div class="input-block">
-      <div class="input-name title1">入住时间</div>
-      <input class="input-input" placeholder="请输入入住时间" @click="showSelect" v-model="data.cityEx" />
+    <div>
+        <div class="input-block">
+            <div class="input-name title1">入住时间</div>
+            <input
+                class="input-input"
+                placeholder="请输入入住时间"
+                @click="showSelect"
+                v-model="data.cityEx"
+            />
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -16,7 +21,7 @@ import '../util/iosSelect/iosSelect.js';
 //areaData_v2需要进行修改，不然会提示data format error，修改在下面讲解
 
 export default {
-    name: 'TimeSelector',
+    name: 'SelectorTime',
     props: ['data'],
     data() {
         return {
@@ -113,7 +118,7 @@ export default {
                             ' ' +
                             selectThreeObj.value;
                         this.$emit('changeInput', {
-                            pluginname: 'TimeSelector',
+                            pluginname: 'SelectorTime',
                             cityEx: cityEx,
                         });
                     },

@@ -4,8 +4,8 @@ import Website from '../App';
 import TextPart from '../components/TextPart';
 
 import InputParten1 from '../components/InputParten1.vue';
-import AddressSelector from '../components/AddressSelector.vue';
-import TimeSelector from '../components/TimeSelector.vue';
+import SelectorAddress from '../components/SelectorAddress.vue';
+import SelectorTime from '../components/SelectorTime.vue';
 import UploadImage from '../components/UploadImage.vue';
 import UploadVideo from '../components/UploadVideo';
 import AxiosPart from '../components/AxiosPart';
@@ -30,14 +30,14 @@ export default new Router({
             component: InputParten1,
         },
         {
-            path: '/AddressSelector',
-            name: 'AddressSelector',
-            component: AddressSelector,
+            path: '/SelectorAddress',
+            name: 'SelectorAddress',
+            component: SelectorAddress,
         },
         {
-            path: '/TimeSelector',
-            name: 'TimeSelector',
-            component: TimeSelector,
+            path: '/SelectorTime',
+            name: 'SelectorTime',
+            component: SelectorTime,
         },
         {
             path: '/UploadImage',

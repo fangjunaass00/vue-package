@@ -27,13 +27,13 @@ export var rank3 = [
         id: '2',
         value: '地址选择器',
         parentId: 'b2',
-        pluginName: 'AddressSelector',
+        pluginName: 'SelectorAddress',
     },
     {
         id: '3',
         value: '时间选择器',
         parentId: 'b2',
-        pluginName: 'TimeSelector',
+        pluginName: 'SelectorTime',
     },
     {
         id: '4',

@@ -1,28 +1,28 @@
 <template>
-  <div id="app page">
-    <!-- <InputParten1 class="input-parten" :data="inputData" @inputOnChange="inputOnChange"></InputParten1> -->
-    <ToolSelector :data="selectData" @changeInput="changeToolSelector"></ToolSelector>
-    <!-- <AddressSelector class="main-page-select" :data="selectData"></AddressSelector> -->
-    <router-view :data="inputDataList[selectData.pluginName]" @changeInput="changeValue" />
-    <!-- <component
+    <div id="app page">
+        <!-- <InputParten1 class="input-parten" :data="inputData" @inputOnChange="inputOnChange"></InputParten1> -->
+        <ToolSelector :data="selectData" @changeInput="changeToolSelector"></ToolSelector>
+        <!-- <AddressSelector class="main-page-select" :data="selectData"></AddressSelector> -->
+        <router-view :data="inputDataList[selectData.pluginName]" @changeInput="changeValue" />
+        <!-- <component
       :is="selectData.pluginName"
       :data="inputDataList[selectData.pluginName]"
       @changeInput="changeValue"
-    ></component>-->
-  </div>
+        ></component>-->
+    </div>
 </template>
 
 <script>
 import ToolSelector from './components/mainTool/ToolSelector';
 
 import InputParten1 from './components/InputParten1.vue';
-import AddressSelector from './components/AddressSelector.vue';
+import SelectorAddress from './components/SelectorAddress.vue';
 
 export default {
     name: 'app',
     components: {
         InputParten1,
-        AddressSelector,
+        SelectorAddress,
         ToolSelector,
     },
     data: function() {
@@ -31,13 +31,13 @@ export default {
                 InputParten1: {
                     value: '你好啊',
                 },
-                AddressSelector: {
+                SelectorAddress: {
                     cityEx: '内蒙古自治区 呼和浩特市 土默特左旗',
-                    pluginname: 'AddressSelector',
+                    pluginname: 'SelectorAddress',
                 },
-                TimeSelector: {
+                SelectorTime: {
                     cityEx: '2018年 1月 1日',
-                    pluginname: 'TimeSelector',
+                    pluginname: 'SelectorTime',
                 },
                 UploadImage: [{ id: 0, value: '' }],
                 UploadVideo: [{ id: 0, value: '' }],
@@ -55,7 +55,9 @@ export default {
         };
     },
     computed: {},
-    created: function() {},
+    created: function() {
+        this.WXConfig.wxShowMenu();
+    },
     mounted: function() {},
     methods: {
         inputOnChange: function() {
@@ -73,12 +75,12 @@ export default {
                     this.inputDataList.InputParten1.value =
                         data.$event.target.value;
                     break;
-                case 'AddressSelector':
-                    console.log(this.inputDataList.AddressSelector.cityEx);
-                    this.inputDataList.AddressSelector.cityEx = data.cityEx;
+                case 'SelectorAddress':
+                    console.log(this.inputDataList.SelectorAddress.cityEx);
+                    this.inputDataList.SelectorAddress.cityEx = data.cityEx;
                     break;
-                case 'TimeSelector':
-                    this.inputDataList.TimeSelector.cityEx = data.cityEx;
+                case 'SelectorTime':
+                    this.inputDataList.SelectorTime.cityEx = data.cityEx;
                     break;
 
                 case 'UploadImage':
