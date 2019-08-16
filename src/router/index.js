@@ -9,6 +9,7 @@ import SelectorTime from '../components/SelectorTime.vue';
 import UploadImage from '../components/UploadImage.vue';
 import UploadVideo from '../components/UploadVideo';
 import AxiosPart from '../components/AxiosPart';
+import PluginHtml2CanvasContainer from '../components/mainTool/PluginHtml2CanvasContainer';
 
 Vue.use(Router);
 
@@ -53,6 +54,11 @@ export default new Router({
             path: '/AxiosPart',
             name: 'AxiosPart',
             component: AxiosPart,
+        },
+        {
+            path: '/PluginHtml2CanvasContainer',
+            name: 'PluginHtml2CanvasContainer',
+            component: PluginHtml2CanvasContainer,
         },
 
         ,

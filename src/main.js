@@ -6,6 +6,10 @@ import router from './router';
 import WXConfig from './util/wechat-share';
 Vue.prototype.WXConfig = WXConfig;
 
+// 总线系统
+import VueBus from './util/vue-bus';
+Vue.use(VueBus);
+
 import axios from 'axios';
 Vue.prototype.$axios = axios;
 axios.defaults.baseURL = 'http://47.99.166.160:83/';

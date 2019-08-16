@@ -10,13 +10,14 @@ export var rank1 = [
 export var rank2 = [
     { id: 'b1', value: 'input组件', parentId: 'a1' },
     { id: 'b2', value: '选择器', parentId: 'a2' },
+
     { id: 'b4', value: '上传', parentId: 'a2' },
+    { id: 'b5', value: '截图', parentId: 'a2' },
     { id: 'b3', value: 'axios', parentId: 'a3' },
 ];
 
 // 区县列表
 export var rank3 = [
-    /**********北京市********/
     {
         id: '1',
         value: 'InputParten1',
@@ -52,5 +53,11 @@ export var rank3 = [
         value: '视频',
         parentId: 'b4',
         pluginName: 'UploadVideo',
+    },
+    {
+        id: '7',
+        value: 'html2Canvas',
+        parentId: 'b5',
+        pluginName: 'PluginHtml2CanvasContainer',
     },
 ];
