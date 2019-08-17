@@ -11,6 +11,7 @@ import UploadVideo from '../components/UploadVideo';
 import AxiosPart from '../components/AxiosPart';
 import PluginHtml2CanvasContainer from '../components/mainTool/PluginHtml2CanvasContainer';
 
+import Mosaic from '../components/sample/Mosaic';
 Vue.use(Router);
 
 export default new Router({
@@ -59,6 +60,11 @@ export default new Router({
             path: '/PluginHtml2CanvasContainer',
             name: 'PluginHtml2CanvasContainer',
             component: PluginHtml2CanvasContainer,
+        },
+        {
+            path: '/Mosaic',
+            name: 'Mosaic',
+            component: Mosaic,
         },
 
         ,
