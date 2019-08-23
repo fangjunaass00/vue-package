@@ -1,24 +1,24 @@
 <template>
-  <div class="sold-dispatch-pic">
-    <div class="sold-dispatch-pic-title title1">房源照片（9图）</div>
-    <div class="sold-dispatch-pic-content">
-      <div class="sold-dispatch-pic-content-box" v-for="item in data" v-bind:key="item.id">
-        <img src="../../public/imgs/plus.png" class="sold-dispatch-pic-content-box-img" />
-        <input
-          type="file"
-          accept="image/*"
-          id="file"
-          class="photo-input"
-          @change="addNewPhoto($event,item.id)"
-        />
-        <div class="photo-show-pic" :style="item.value"></div>
-      </div>
+    <div class="sold-dispatch-pic">
+        <div class="sold-dispatch-pic-title title1">房源视频（15s以内）</div>
+        <div class="sold-dispatch-pic-content">
+            <div class="sold-dispatch-pic-content-box" v-for="item in data" v-bind:key="item.id">
+                <img src="../../../public/imgs/plus.png" class="sold-dispatch-pic-content-box-img" />
+                <input
+                    type="file"
+                    accept="video/*"
+                    id="file"
+                    class="photo-input"
+                    @change="addNewVideo($event,item.id)"
+                />
+                <video class="video-show-pic" :src="item.value"></video>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 <script>
 export default {
-    name: 'UploadImage',
+    name: 'UploadVideo',
     props: ['data'],
     data: function() {
         return {
@@ -26,33 +26,28 @@ export default {
         };
     },
     methods: {
-        addNewPhoto: function(e, id) {
-            console.log(id);
-            console.log(e.target.files[0]);
-
+        addNewVideo: function(e, id) {
             var that = this;
             var file = e.target.files[0];
-            if (file.type.indexOf('image') == 0) {
+            if (file.type.indexOf('video') == 0) {
                 var reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = function(e) {
                     // 图片base64化
                     var url = this.result;
                     that.$emit('changeInput', {
-                        pluginname: 'UploadImage',
+                        pluginname: 'UploadVideo',
                         url,
                     });
                     return;
-                    that.pageInfo.picData[
-                        that.pageInfo.picData.length - 1
-                    ].value =
-                        'background:url(' + newUrl + ');backgroundSize:cover';
-                    var obj = { id: that.pageInfo.picData.length, value: '' };
-                    that.pageInfo.picData.push(obj);
+                    console.log(newUrl);
+                    that.pageInfo.videoData[
+                        that.pageInfo.videoData.length - 1
+                    ].value = newUrl;
+                    var obj = { id: that.pageInfo.videoData.length, value: '' };
+                    that.pageInfo.videoData.push(obj);
                 };
             }
-
-            return;
         },
     },
 };
@@ -107,6 +102,13 @@ export default {
     left: 0;
     top: 0;
     background-size: cover;
+}
+.video-show-pic {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 </style>
 

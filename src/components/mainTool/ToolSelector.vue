@@ -54,6 +54,9 @@ export default {
 .input-block {
     width: 100%;
     height: 30vw;
+    position: fixed;
+    top: 0;
+    z-index: 999;
 }
 .input-name {
     width: 100%;

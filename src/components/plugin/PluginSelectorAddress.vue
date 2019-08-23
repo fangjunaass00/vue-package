@@ -3,7 +3,7 @@
         <!-- <div class="rightList" @click="showSelect">
       <input placeholder="请选择地址" v-model="cityEx" />
         </div>-->
-        <div class="input-block">
+        <div class="input-block" @click="showSelect">
             <div class="input-name title1">{{data.title}}</div>
             <!-- <input
         class="input-input"
@@ -11,11 +11,12 @@
         @click="showSelect"
         v-model="cityEx"
             />-->
-            <div
+            <!-- <div
                 class="input-input"
                 :placeholder="data.placeholder"
                 @click="showSelect"
-            >{{data.cityEx}}</div>
+            >{{data.cityEx}}</div>-->
+            <div class="city">{{data.province+" "+data.city+" "+data.road}}</div>
         </div>
     </div>
 </template>
@@ -23,8 +24,8 @@
 <script>
 // 使用 npm i iosselect 安装插件
 // 参考：https://www.npmjs.com/package/iosselect
-import '../util/iosSelect/iosSelect.css';
-import '../util/iosSelect/iosSelect.js';
+import '../../util/iosSelect/iosSelect.css';
+import '../../util/iosSelect/iosSelect.js';
 
 //three中的两个辅助文件，用来支撑地区选择的数据
 // import './zepto.js';
@@ -33,7 +34,7 @@ import {
     iosProvinces,
     iosCitys,
     iosCountys,
-} from '../util/iosSelect/areaData_v2.js';
+} from '../../util/iosSelect/areaData_v2.js';
 
 export default {
     props: ['data'],
@@ -60,15 +61,15 @@ export default {
                     twoLevelId: levels[1],
                     threeLevelId: levels[2], //地址选择点击确定后的回调
                     callback: (selectOneObj, selectTwoObj, selectThreeObj) => {
-                        var cityEx =
-                            selectOneObj.value +
-                            ' ' +
-                            selectTwoObj.value +
-                            ' ' +
-                            selectThreeObj.value;
+                        var data = {
+                            province: selectOneObj.value,
+                            city: selectTwoObj.value,
+                            road: selectThreeObj.value,
+                        };
+
                         this.$emit('changeInput', {
                             pluginname: 'SelectorAddress',
-                            cityEx: cityEx,
+                            address: data,
                         });
                     },
                 }

@@ -14,50 +14,54 @@ export var rank2 = [
     { id: 'b4', value: '上传', parentId: 'a2' },
     { id: 'b5', value: '截图', parentId: 'a2' },
     { id: 'b3', value: 'axios', parentId: 'a3' },
+    { id: 'b6', value: '序列帧', parentId: 'a1' },
+    { id: 'b7', value: '其他组件', parentId: 'a1' },
 ];
 
 // 区县列表
 export var rank3 = [
     {
         id: '1',
-        value: 'InputParten1',
+        value: 'InputParten',
         parentId: 'b1',
-        pluginName: 'InputParten1',
+        pluginName: 'InputParten',
     },
     {
         id: '2',
         value: '地址选择器',
         parentId: 'b2',
-        pluginName: 'SelectorAddress',
+        pluginName: 'PluginSelector',
     },
+
     {
         id: '3',
-        value: '时间选择器',
-        parentId: 'b2',
-        pluginName: 'SelectorTime',
-    },
-    {
-        id: '4',
         value: '说明和简单使用',
         parentId: 'b3',
         pluginName: 'AxiosPart',
     },
     {
-        id: '5',
+        id: '4',
         value: '图片上传',
         parentId: 'b4',
-        pluginName: 'UploadImage',
+        pluginName: 'SampleUpload',
     },
+
     {
-        id: '6',
-        value: '视频',
-        parentId: 'b4',
-        pluginName: 'UploadVideo',
-    },
-    {
-        id: '7',
+        id: '5',
         value: 'html2Canvas',
         parentId: 'b5',
         pluginName: 'PluginHtml2CanvasContainer',
+    },
+    {
+        id: '6',
+        value: '序列帧1',
+        parentId: 'b6',
+        pluginName: 'SampleMovieClipContainer',
+    },
+    {
+        id: '7',
+        value: '音乐',
+        parentId: 'b7',
+        pluginName: 'OtherContainer?name=SampleMusicButton',
     },
 ];

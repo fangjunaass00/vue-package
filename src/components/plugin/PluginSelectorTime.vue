@@ -1,20 +1,22 @@
 <template>
     <div>
-        <div class="input-block">
-            <div class="input-name title1">入住时间</div>
-            <input
+        <div class="input-block" @click="showSelect">
+            <div class="input-name title1">请选择时间</div>
+            <div>{{data}}</div>
+            <div></div>
+            <!-- <input
                 class="input-input"
                 placeholder="请输入入住时间"
                 @click="showSelect"
                 v-model="data.cityEx"
-            />
+            />-->
         </div>
     </div>
 </template>
 
 <script>
-import '../util/iosSelect/iosSelect.css';
-import '../util/iosSelect/iosSelect.js';
+import '../../util/iosSelect/iosSelect.css';
+import '../../util/iosSelect/iosSelect.js';
 
 //three中的两个辅助文件，用来支撑地区选择的数据
 // import './zepto.js';
@@ -111,7 +113,7 @@ export default {
                     itemHeight: 35,
                     relation: [1, 1], //三个初始值，省市县
                     callback: (selectOneObj, selectTwoObj, selectThreeObj) => {
-                        var cityEx =
+                        var str =
                             selectOneObj.value +
                             ' ' +
                             selectTwoObj.value +
@@ -119,7 +121,7 @@ export default {
                             selectThreeObj.value;
                         this.$emit('changeInput', {
                             pluginname: 'SelectorTime',
-                            cityEx: cityEx,
+                            value: str,
                         });
                     },
                 }

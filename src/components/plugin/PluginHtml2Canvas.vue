@@ -20,23 +20,27 @@ export default {
     mounted() {
         // 如果页面一加载就需要生成图片,就在mounted里调用方法,给一个setTimeout,保证页面元素已存在
         // setTimeout(this.toImage, 500);
-        this.$bus.on('screenshoot', this.toImage);
+
+        this.$on('screenshoot', function(data) {
+            this.toImage(data);
+        });
     },
     props: ['screendom'],
     methods: {
         toImage(data) {
             console.log(this.screendom);
             const dom = data.file;
-            // 缩小三倍（将要放大的元素放大三倍再缩小回来保证精度）
-            const scale = 3;
-            html2canvas(data.file, {
+            html2canvas(dom, {
                 // scale,
-                width: dom.offsetWidth * scale,
-                height: dom.offsetHeight * scale,
+                useCORS: true,
+                width: dom.offsetWidth,
+                height: dom.offsetHeight,
             }).then(canvas => {
                 const context = canvas.getContext('2d');
                 // 【重要】关闭抗锯齿 https://segmentfault.com/a/1190000011478657
-
+                context.mozImageSmoothingEnabled = false;
+                context.webkitImageSmoothingEnabled = false;
+                context.msImageSmoothingEnabled = false;
                 context.imageSmoothingEnabled = false;
                 //处理canvas，例如加水印
                 //完成canvas

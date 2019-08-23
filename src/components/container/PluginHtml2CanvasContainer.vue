@@ -3,13 +3,13 @@
         <div class="left-container" ref="imageTofile">
             <img src="../../../public/imgs/test1.jpg" class="screen-png" />
         </div>
-        <PluginHtml2Canvas class="right-container" :screendom="screendom"></PluginHtml2Canvas>
+        <PluginHtml2Canvas class="right-container" :screendom="screendom" ref="screenshoot"></PluginHtml2Canvas>
         <div class="screen-shot-btn" @click="screenShot">截图</div>
     </div>
 </template>
 
 <script>
-import PluginHtml2Canvas from '../../components/PluginHtml2Canvas.vue';
+import PluginHtml2Canvas from '../../components/plugin/PluginHtml2Canvas.vue';
 export default {
     name: 'PluginHtml2CanvasContainer',
     components: { PluginHtml2Canvas },
@@ -20,8 +20,9 @@ export default {
     },
     methods: {
         screenShot: function() {
-            console.log(this.$refs.imageTofile);
-            this.$bus.emit('screenshoot', { file: this.$refs.imageTofile });
+            this.$refs.screenshoot.$emit('screenshoot', {
+                file: this.$refs.imageTofile,
+            });
         },
     },
 };
@@ -35,7 +36,6 @@ export default {
 }
 .screen-png {
     width: 100%;
-    transform: scale(3);
 }
 .left-container,
 .right-container {

@@ -1,5 +1,11 @@
 // 使用 npm install --save jweixin-npm 安装jdk
 // 在main.js中完成注册，然后在任意地方调用wxShowMenu即可
+// main.js---
+// import WXConfig from './util/wechat-share';
+// Vue.prototype.WXConfig = WXConfig;
+// app.vue---
+// this.WXConfig.wxShowMenu();
+
 import axios from 'axios';
 import wx from 'jweixin-npm';
 export default {
@@ -8,7 +14,6 @@ export default {
         console.log(postdata);
         axios
             .get(
-                // 'https://univadis.herdsric.com/univadis-2019/getJsSignatureJson.do',
                 'http://univadis.herdsric.com/univadis-2019/getJsSignatureJson.do',
                 { params: postdata }
             )

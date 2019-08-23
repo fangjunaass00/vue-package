@@ -1,23 +1,19 @@
 <template>
-  <div class="input-block">
-    <div>请输入：</div>
-    <div class="input-block-input">
-      <input type="text" :value="data.value" @input="changeValue($event)" />
-      <div>input值：{{data.value}}</div>
+    <div class="input-block">
+        <div>请输入：</div>
+        <div class="input-block-input">
+            <input type="text" :value="data.value" @input="changeValue($event)" />
+            <div>input值：{{data.value}}</div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-    name: 'InputParten1',
+    name: 'InputParten',
     props: ['data'],
     methods: {
         changeValue: function($event) {
-            console.log('change', {
-                pluginname: 'InputParten1',
-                $event,
-            });
             this.$emit('changeInput', {
                 pluginname: 'InputParten1',
                 $event,

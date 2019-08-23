@@ -15,14 +15,9 @@
 <script>
 import ToolSelector from './components/mainTool/ToolSelector';
 
-import InputParten1 from './components/InputParten1.vue';
-import SelectorAddress from './components/SelectorAddress.vue';
-
 export default {
     name: 'app',
     components: {
-        InputParten1,
-        SelectorAddress,
         ToolSelector,
     },
     data: function() {
@@ -65,6 +60,7 @@ export default {
         },
         changeToolSelector: function(data) {
             this.selectData = data;
+            console.log(data);
             this.$router.push({ path: '/' + this.selectData.pluginName });
         },
         changeValue: function(data) {

@@ -3,15 +3,15 @@ import Router from 'vue-router';
 import Website from '../App';
 import TextPart from '../components/TextPart';
 
-import InputParten1 from '../components/InputParten1.vue';
-import SelectorAddress from '../components/SelectorAddress.vue';
-import SelectorTime from '../components/SelectorTime.vue';
-import UploadImage from '../components/UploadImage.vue';
-import UploadVideo from '../components/UploadVideo';
-import AxiosPart from '../components/AxiosPart';
-import PluginHtml2CanvasContainer from '../components/mainTool/PluginHtml2CanvasContainer';
+import InputParten from '../components/container/SampleInput';
+import PluginSelector from '../components/container/PluginSelector';
+import SampleUpload from '../components/container/SampleUpload';
+import AxiosPart from '../components/container/SampleAxiosPart';
+import PluginHtml2CanvasContainer from '../components/container/PluginHtml2CanvasContainer';
+import SampleMovieClipContainer from '../components/container/SampleMovieClipContainer';
+import OtherContainer from '../components/container/OtherContainer';
 
-import Mosaic from '../components/sample/Mosaic';
+// import Mosaic from '../components/sample/Mosaic';
 Vue.use(Router);
 
 export default new Router({
@@ -22,35 +22,27 @@ export default new Router({
             component: Website,
         },
         {
-            path: '/TextPart',
+            path: '/test',
             name: 'Website',
             component: TextPart,
         },
         {
-            path: '/InputParten1',
-            name: 'InputParten1',
-            component: InputParten1,
+            path: '/InputParten',
+            name: 'InputParten',
+            component: InputParten,
+        },
+
+        {
+            path: '/PluginSelector',
+            name: 'PluginSelector',
+            component: PluginSelector,
         },
         {
-            path: '/SelectorAddress',
-            name: 'SelectorAddress',
-            component: SelectorAddress,
+            path: '/SampleUpload',
+            name: 'SampleUpload',
+            component: SampleUpload,
         },
-        {
-            path: '/SelectorTime',
-            name: 'SelectorTime',
-            component: SelectorTime,
-        },
-        {
-            path: '/UploadImage',
-            name: 'UploadImage',
-            component: UploadImage,
-        },
-        {
-            path: '/UploadVideo',
-            name: 'UploadVideo',
-            component: UploadVideo,
-        },
+
         {
             path: '/AxiosPart',
             name: 'AxiosPart',
@@ -62,11 +54,14 @@ export default new Router({
             component: PluginHtml2CanvasContainer,
         },
         {
-            path: '/Mosaic',
-            name: 'Mosaic',
-            component: Mosaic,
+            path: '/SampleMovieClipContainer',
+            name: 'SampleMovieClipContainer',
+            component: SampleMovieClipContainer,
         },
-
-        ,
+        {
+            path: '/OtherContainer',
+            name: 'OtherContainer',
+            component: OtherContainer,
+        },
     ],
 });
