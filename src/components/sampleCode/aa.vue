@@ -1,39 +1,47 @@
 <template>
-    <div class="sold-dispatch-pic-content-box">
-        <img src="../../../public/imgs/plus.png" class="sold-dispatch-pic-content-box-img" />
-        <input
-            type="file"
-            accept="video/*"
-            id="file"
-            class="photo-input"
-            @change="addNewVideo($event,data.id)"
-        />
-        <video class="video-show-pic" :src="data.value"></video>
+    <div class="sold-dispatch-pic-content">
+        <div class="sold-dispatch-pic-content-box" v-for="item in data" v-bind:key="item.id">
+            <img src="../../../public/imgs/plus.png" class="sold-dispatch-pic-content-box-img" />
+            <input
+                type="file"
+                accept="video/*"
+                id="file"
+                class="photo-input"
+                @change="addNewVideo($event,item.id)"
+            />
+            <video class="video-show-pic" :src="item.value"></video>
+        </div>
     </div>
 </template>
 <script>
 export default {
-    name: 'UploadVideo',
+    name: 'SampleUploadImage',
     props: ['data'],
     data: function() {
         return {};
     },
+    props: ['data'],
     methods: {
-        addNewVideo: function(e, id) {
+        addNewPhoto: function(e, id) {
+            console.log(id);
+            console.log(e.target.files[0]);
+
             var that = this;
             var file = e.target.files[0];
-            if (file.type.indexOf('video') == 0) {
+            if (file.type.indexOf('image') == 0) {
                 var reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = function(e) {
                     // 图片base64化
                     var url = this.result;
                     that.$emit('changeInput', {
-                        name: 'UploadVideo',
+                        name: 'UploadImage',
                         value: url,
                     });
                 };
             }
+
+            return;
         },
     },
 };
@@ -88,13 +96,6 @@ export default {
     left: 0;
     top: 0;
     background-size: cover;
-}
-.video-show-pic {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
 }
 </style>
 

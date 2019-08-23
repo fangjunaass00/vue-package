@@ -51,10 +51,6 @@ export default {
                 // relation: [1], //三个初始值，省市县
                 // oneLevelId: '10000',
                 callback: function(data) {
-                    // that.$bus.emit('selectone', {
-                    //     name: that.data.name,
-                    //     value: data,
-                    // });
                     that.showComponentName = data.name;
                     console.log(data);
                 },
@@ -64,7 +60,8 @@ export default {
             this.timeData = data.value;
         },
         changeInputAddress(data) {
-            this.address = data.address;
+            console.log(data);
+            this.addressData = data.address;
         },
     },
     components: {

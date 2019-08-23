@@ -18,11 +18,23 @@
                 ></UploadImage>
             </div>
         </div>
-        <UploadVideo
+        <div class="sold-dispatch-pic">
+            <div class="sold-dispatch-pic-title title1">房源视频（15s以内）</div>
+            <div class="sold-dispatch-pic-content">
+                <UploadVideo
+                    v-for="item in videodata.list"
+                    :key="item.id"
+                    :data="item"
+                    :name="videodata.name"
+                    @changeInput="addNewVideo"
+                ></UploadVideo>
+            </div>
+        </div>
+        <!-- <UploadVideo
             v-if="showComponentName=='UploadVideo'"
             :data="UploadVideo"
             @changeInput="changeImage"
-        ></UploadVideo>
+        ></UploadVideo>-->
     </div>
 </template>
 
@@ -42,7 +54,7 @@ export default {
                 { id: '3', value: 'input1', name: 'InputParten' },
             ],
             picdata: { name: 'uploadImage', list: [{ id: 0, value: '' }] },
-            UploadVideo: [{ id: 0, value: '' }],
+            videodata: { name: 'uploadVideo', list: [{ id: 0, value: '' }] },
             showComponentName: 'UploadImage',
         };
     },
@@ -54,6 +66,13 @@ export default {
             var obj = { id: this.picdata.length, value: '' };
             this.picdata.list.push(obj);
         },
+        addNewVideo: function(data) {
+            this.videodata.list[this.videodata.list.length - 1].value =
+                data.value;
+            var obj = { id: this.videodata.length, value: '' };
+            this.videodata.list.push(obj);
+        },
+
         //地址显示控件点击后触发事件
         showSelect: function() {
             //自己实现的根据地址名称获取id，代码如下

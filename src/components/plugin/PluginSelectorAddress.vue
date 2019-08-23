@@ -48,7 +48,7 @@ export default {
         //地址显示控件点击后触发事件
         showSelect: function() {
             //自己实现的根据地址名称获取id，代码如下
-            var levels = this.textToLevel(this.data.cityEx);
+            var levels = this.textToLevel(this.data);
 
             var iosSelect = new IosSelect(
                 3,
@@ -75,35 +75,27 @@ export default {
                 }
             );
         }, //根据地址名字转化未三级level，用以给iosSelect设置初始值
-        textToLevel: function(text) {
+        textToLevel: function(data) {
             var arr = [];
 
-            if (text) {
-                var objs = text.split(' ');
+            if (data) {
+                iosProvinces.forEach((item, index) => {
+                    if (item.value == data.province) {
+                        arr.push(item.id);
+                    }
+                });
 
-                if (objs[0]) {
-                    iosProvinces.forEach((item, index) => {
-                        if (item.value == objs[0]) {
-                            arr.push(item.id);
-                        }
-                    });
-                }
+                iosCitys.forEach((item, index) => {
+                    if (item.value == data.city) {
+                        arr.push(item.id);
+                    }
+                });
 
-                if (objs[1]) {
-                    iosCitys.forEach((item, index) => {
-                        if (item.value == objs[1]) {
-                            arr.push(item.id);
-                        }
-                    });
-                }
-
-                if (objs[2]) {
-                    iosCountys.forEach((item, index) => {
-                        if (item.value == objs[2]) {
-                            arr.push(item.id);
-                        }
-                    });
-                }
+                iosCountys.forEach((item, index) => {
+                    if (item.value == data.road) {
+                        arr.push(item.id);
+                    }
+                });
             }
 
             return arr;
