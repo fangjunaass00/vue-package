@@ -15,7 +15,7 @@ export var rank2 = [
     { id: 'b5', value: '截图', parentId: 'a2' },
     { id: 'b3', value: 'axios', parentId: 'a3' },
     { id: 'b6', value: '序列帧', parentId: 'a1' },
-    { id: 'b7', value: '其他组件', parentId: 'a1' },
+    { id: 'b7', value: '音乐', parentId: 'a1' },
 ];
 
 // 区县列表
@@ -62,6 +62,6 @@ export var rank3 = [
         id: '7',
         value: '音乐',
         parentId: 'b7',
-        pluginName: 'OtherContainer?name=SampleMusicButton',
+        pluginName: 'SampleMusicContainer',
     },
 ];

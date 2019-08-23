@@ -1,6 +1,5 @@
 <template>
     <div class="center">
-        <component :is="componentName"></component>
         <SampleMusicButton
             :musicdata="musicdata"
             @backgroundMusicPause="musicPause"
@@ -23,14 +22,6 @@ export default {
         };
     },
     methods: {
-        getUrlpara: function() {
-            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
-            var r = window.location.search.substr(1).match(reg);
-            if (!!r) {
-                return decodeURI(r[2]);
-            }
-            return null;
-        },
         musicPlay() {
             this.musicdata.playing = true;
         },
@@ -39,8 +30,6 @@ export default {
         },
     },
     mounted: function() {
-        console.log(this.$route.query);
-        this.componentName = this.getUrlpara('name');
         setTimeout(() => {
             this.musicdata.visible = true;
         }, 2000);

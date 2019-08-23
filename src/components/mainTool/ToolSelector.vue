@@ -41,8 +41,9 @@ export default {
                         rank1: selectOneObj.value,
                         rank2: selectTwoObj.value,
                         rank3: selectThreeObj.value,
-                        pluginName: selectThreeObj.pluginname,
+                        pluginData: selectThreeObj,
                     };
+                    // console.log(JSON.parse(selectThreeObj.parameter));
                     this.$emit('changeInput', data);
                 },
             });

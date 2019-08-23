@@ -1,30 +1,24 @@
 <template>
-    <div class="sold-dispatch-pic">
-        <div class="sold-dispatch-pic-title title1">房源照片（9图）</div>
-        <div class="sold-dispatch-pic-content">
-            <div class="sold-dispatch-pic-content-box" v-for="item in data" v-bind:key="item.id">
-                <img src="../../../public/imgs/plus.png" class="sold-dispatch-pic-content-box-img" />
-                <input
-                    type="file"
-                    accept="image/*"
-                    id="file"
-                    class="photo-input"
-                    @change="addNewPhoto($event,item.id)"
-                />
-                <div class="photo-show-pic" :style="item.value"></div>
-            </div>
-        </div>
+    <div class="sold-dispatch-pic-content-box">
+        <img src="../../../public/imgs/plus.png" class="sold-dispatch-pic-content-box-img" />
+        <input
+            type="file"
+            accept="image/*"
+            id="file"
+            class="photo-input"
+            @change="addNewPhoto($event,data.id)"
+        />
+        <div class="photo-show-pic" :style="data.value"></div>
     </div>
 </template>
 <script>
 export default {
-    name: 'UploadImage',
+    name: 'SampleUploadImage',
     props: ['data'],
     data: function() {
-        return {
-            picData: [{ id: 0, value: '' }],
-        };
+        return {};
     },
+    props: ['data'],
     methods: {
         addNewPhoto: function(e, id) {
             console.log(id);
@@ -39,16 +33,9 @@ export default {
                     // 图片base64化
                     var url = this.result;
                     that.$emit('changeInput', {
-                        pluginname: 'UploadImage',
-                        url,
+                        name: 'UploadImage',
+                        value: url,
                     });
-                    return;
-                    that.pageInfo.picData[
-                        that.pageInfo.picData.length - 1
-                    ].value =
-                        'background:url(' + newUrl + ');backgroundSize:cover';
-                    var obj = { id: that.pageInfo.picData.length, value: '' };
-                    that.pageInfo.picData.push(obj);
                 };
             }
 

@@ -9,6 +9,8 @@ import SampleUpload from '../components/container/SampleUpload';
 import AxiosPart from '../components/container/SampleAxiosPart';
 import PluginHtml2CanvasContainer from '../components/container/PluginHtml2CanvasContainer';
 import SampleMovieClipContainer from '../components/container/SampleMovieClipContainer';
+import SampleMusicContainer from '../components/container/SampleMusicContainer';
+
 import OtherContainer from '../components/container/OtherContainer';
 
 // import Mosaic from '../components/sample/Mosaic';
@@ -63,5 +65,11 @@ export default new Router({
             name: 'OtherContainer',
             component: OtherContainer,
         },
+        {
+            path: '/SampleMusicContainer',
+            name: 'SampleMusicContainer',
+            component: SampleMusicContainer,
+        },
+        ,
     ],
 });

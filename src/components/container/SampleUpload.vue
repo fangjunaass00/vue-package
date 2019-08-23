@@ -1,11 +1,23 @@
 <template>
     <div>
         <div class="title" @click="showSelect">请选择上传种类</div>
-        <UploadImage
+        <!-- <UploadImage
             v-if="showComponentName=='UploadImage'"
             :data="UploadImage"
             @changeInput="changeImage"
-        ></UploadImage>
+        ></UploadImage>-->
+        <div class="sold-dispatch-pic" v-if="showComponentName=='UploadImage'">
+            <div class="sold-dispatch-pic-title title1">房源照片（9图）</div>
+            <div class="sold-dispatch-pic-content">
+                <UploadImage
+                    v-for="item in picdata.list"
+                    :key="item.id"
+                    :data="item"
+                    :name="picdata.name"
+                    @changeInput="addNewPhoto"
+                ></UploadImage>
+            </div>
+        </div>
         <UploadVideo
             v-if="showComponentName=='UploadVideo'"
             :data="UploadVideo"
@@ -29,13 +41,19 @@ export default {
                 { id: '2', value: '视频上传', name: 'UploadVideo' },
                 { id: '3', value: 'input1', name: 'InputParten' },
             ],
-            UploadImage: [{ id: 0, value: '' }],
+            picdata: { name: 'uploadImage', list: [{ id: 0, value: '' }] },
             UploadVideo: [{ id: 0, value: '' }],
             showComponentName: 'UploadImage',
         };
     },
     components: { UploadImage, UploadVideo },
     methods: {
+        addNewPhoto: function(data) {
+            this.picdata.list[this.picdata.list.length - 1].value =
+                'background:url(' + data.value + ');backgroundSize:cover';
+            var obj = { id: this.picdata.length, value: '' };
+            this.picdata.list.push(obj);
+        },
         //地址显示控件点击后触发事件
         showSelect: function() {
             //自己实现的根据地址名称获取id，代码如下

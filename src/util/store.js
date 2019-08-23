@@ -3,7 +3,7 @@ let store = {
     state: {
         message: 'Hello!',
         // 用于加载Loading页的素材列表
-        sourceArrayPreLoad: [process.env.BASE_URL + 'imgs/bg-loading.jpg'],
+        sourceArrayPreLoad: ['imgs/bg-loading.jpg'],
         // 用于加载主内容的素材列表
         sourceArrayLoading: [],
         testArr: [],

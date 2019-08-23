@@ -3,12 +3,7 @@
         <!-- <InputParten1 class="input-parten" :data="inputData" @inputOnChange="inputOnChange"></InputParten1> -->
         <ToolSelector :data="selectData" @changeInput="changeToolSelector"></ToolSelector>
         <!-- <AddressSelector class="main-page-select" :data="selectData"></AddressSelector> -->
-        <router-view :data="inputDataList[selectData.pluginName]" @changeInput="changeValue" />
-        <!-- <component
-      :is="selectData.pluginName"
-      :data="inputDataList[selectData.pluginName]"
-      @changeInput="changeValue"
-        ></component>-->
+        <router-view class="router-container" />
     </div>
 </template>
 
@@ -22,22 +17,6 @@ export default {
     },
     data: function() {
         return {
-            inputDataList: {
-                InputParten1: {
-                    value: '你好啊',
-                },
-                SelectorAddress: {
-                    cityEx: '内蒙古自治区 呼和浩特市 土默特左旗',
-                    pluginname: 'SelectorAddress',
-                },
-                SelectorTime: {
-                    cityEx: '2018年 1月 1日',
-                    pluginname: 'SelectorTime',
-                },
-                UploadImage: [{ id: 0, value: '' }],
-                UploadVideo: [{ id: 0, value: '' }],
-            },
-
             selectData: {
                 title: '请选择查看的组件',
                 placeholder: '点击选择组件',
@@ -60,47 +39,12 @@ export default {
         },
         changeToolSelector: function(data) {
             this.selectData = data;
-            console.log(data);
-            this.$router.push({ path: '/' + this.selectData.pluginName });
-        },
-        changeValue: function(data) {
-            console.log(data);
-            console.log(this.inputDataList);
-            switch (data.pluginname) {
-                case 'InputParten1':
-                    this.inputDataList.InputParten1.value =
-                        data.$event.target.value;
-                    break;
-                case 'SelectorAddress':
-                    console.log(this.inputDataList.SelectorAddress.cityEx);
-                    this.inputDataList.SelectorAddress.cityEx = data.cityEx;
-                    break;
-                case 'SelectorTime':
-                    this.inputDataList.SelectorTime.cityEx = data.cityEx;
-                    break;
+            console.log(data.pluginData.parameter);
 
-                case 'UploadImage':
-                    this.inputDataList.UploadImage[
-                        this.inputDataList.UploadImage.length - 1
-                    ].value =
-                        'background:url(' + data.url + ');backgroundSize:cover';
-                    var obj = {
-                        id: this.inputDataList.UploadImage.length,
-                        value: '',
-                    };
-                    this.inputDataList.UploadImage.push(obj);
-                    break;
-                case 'UploadVideo':
-                    this.inputDataList.UploadVideo[
-                        this.inputDataList.UploadVideo.length - 1
-                    ].value = data.url;
-                    var obj = {
-                        id: this.inputDataList.UploadVideo.length,
-                        value: '',
-                    };
-                    this.inputDataList.UploadVideo.push(obj);
-                    break;
-            }
+            this.$router.push({
+                path: '/' + this.selectData.pluginData.pluginname,
+                query: { name: data.pluginData.parameter },
+            });
         },
     },
 };
@@ -121,5 +65,11 @@ body {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+}
+.router-container {
+    width: 100%;
+    height: calc(100vh - 30vw);
+    position: absolute;
+    top: 30vw;
 }
 </style>
