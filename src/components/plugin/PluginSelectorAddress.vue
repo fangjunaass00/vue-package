@@ -1,21 +1,9 @@
 <template>
     <div>
-        <!-- <div class="rightList" @click="showSelect">
-      <input placeholder="请选择地址" v-model="cityEx" />
-        </div>-->
+       
         <div class="input-block" @click="showSelect">
             <div class="input-name title1">{{data.title}}</div>
-            <!-- <input
-        class="input-input"
-        :placeholder="data.placeholder"
-        @click="showSelect"
-        v-model="cityEx"
-            />-->
-            <!-- <div
-                class="input-input"
-                :placeholder="data.placeholder"
-                @click="showSelect"
-            >{{data.cityEx}}</div>-->
+       
             <div class="city">{{data.province+" "+data.city+" "+data.road}}</div>
         </div>
     </div>

@@ -12,6 +12,7 @@ import SampleMovieClipContainer from '../components/container/SampleMovieClipCon
 import SampleMusicContainer from '../components/container/SampleMusicContainer';
 
 import OtherContainer from '../components/container/OtherContainer';
+import PluginSwiperContainer from '../components/container/PluginSwiperContainer';
 
 // import Mosaic from '../components/sample/Mosaic';
 Vue.use(Router);
@@ -66,9 +67,9 @@ export default new Router({
             component: OtherContainer,
         },
         {
-            path: '/SampleMusicContainer',
-            name: 'SampleMusicContainer',
-            component: SampleMusicContainer,
+            path: '/PluginSwiperContainer',
+            name: 'PluginSwiperContainer',
+            component: PluginSwiperContainer,
         },
         ,
     ],

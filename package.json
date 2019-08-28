@@ -13,6 +13,7 @@
     "html2canvas": "^1.0.0-rc.3",
     "iosselect": "^1.1.5",
     "jweixin-npm": "^1.4.3",
+    "swiper": "^4.5.0",
     "vconsole": "^3.3.2",
     "vue": "^2.6.10",
     "vue-lottie": "^0.2.1",
